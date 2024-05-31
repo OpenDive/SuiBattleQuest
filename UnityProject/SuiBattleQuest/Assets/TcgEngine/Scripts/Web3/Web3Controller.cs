@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using TMPro;
 using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.SceneManagement;
 
 public class Web3Controller : MonoBehaviour
 {
@@ -67,6 +68,9 @@ public class Web3Controller : MonoBehaviour
     void OnSuiAddress(string suiaddress)
     {
         PlayerPrefs.SetString("SUI_ADDRESS", suiaddress);
+
+        SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+
     }
 
     /**
