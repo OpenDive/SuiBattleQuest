@@ -3,7 +3,7 @@ export const FULLNODE_URL = "https://fullnode.devnet.sui.io";
 export const CLIENT_ID =
   "132494794905-3g20nk4imhr2tn2ac84bevfts8tl2r7q.apps.googleusercontent.com";
 
-export const REDIRECT_URI = "https://localhost:3000";
+export const REDIRECT_URI = "http://localhost:3000/oauth/callback";
 
 export const SUI_DEVNET_FAUCET = 'https://faucet.devnet.sui.io/gas'
 
