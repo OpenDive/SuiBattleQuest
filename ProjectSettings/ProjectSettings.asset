@@ -520,7 +520,8 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    HIDE_FULL_SCREEN_BUTTON: 
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -768,7 +769,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: APPLICATION:Minimal
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
@@ -788,7 +789,7 @@ PlayerSettings:
     PS5: UNITY_POST_PROCESSING_STACK_V2
     Stadia: UNITY_POST_PROCESSING_STACK_V2
     Standalone: UNITY_POST_PROCESSING_STACK_V2;TCG_ENGINE
-    WebGL: UNITY_POST_PROCESSING_STACK_V2
+    WebGL: UNITY_POST_PROCESSING_STACK_V2;TCG_ENGINE
     Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2
     XboxOne: UNITY_POST_PROCESSING_STACK_V2
     iPhone: UNITY_POST_PROCESSING_STACK_V2

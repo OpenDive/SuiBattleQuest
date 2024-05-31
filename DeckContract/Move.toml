@@ -1,0 +1,9 @@
+[package]
+name = "deckcontract"
+version = "0.0.1"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "97cb8e30857a5fc8358567543ba3eeb6a1c7c1f3" }
+
+[addresses]
+deck = "0x0"

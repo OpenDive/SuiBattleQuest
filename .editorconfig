@@ -2,3 +2,6 @@
 
 # CS0436: Type conflicts with imported type
 dotnet_diagnostic.CS0436.severity = none
+
+# UNT0011: ScriptableObject instance creation
+dotnet_diagnostic.UNT0011.severity = none
