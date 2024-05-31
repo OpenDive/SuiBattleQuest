@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using TMPro;
+using System.Threading.Tasks;
+using TcgEngine;
 
 public class Web3Controller : MonoBehaviour
 {
@@ -61,6 +63,19 @@ public class Web3Controller : MonoBehaviour
     {
         debugLog.text = "On ZK Login!";
         // Switch scenes
+    }
+
+    /**
+     * 
+     */
+    public static async Task<string> GetSuiFrens()
+    {
+        //Get External IP
+        WebResponse res = await WebTool.SendRequest("https://api.ipify.org");
+        if (res.success)
+            return res.data;
+        else
+            return null;
     }
 
     /**
