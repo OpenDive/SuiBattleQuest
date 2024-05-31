@@ -65,7 +65,7 @@ public class Web3Controller : MonoBehaviour
         // Switch scenes
     }
 
-    void OnSuiAddress(string suiaddress)
+    public void OnSuiAddress(string suiaddress)
     {
         PlayerPrefs.SetString("SUI_ADDRESS", suiaddress);
 
