@@ -67,7 +67,10 @@ public class Web3Controller : MonoBehaviour
 
     public void OnSuiAddress(string suiaddress)
     {
-        PlayerPrefs.SetString("SUI_ADDRESS", suiaddress);
+        if (!PlayerPrefs.HasKey("SUI_ADDRESS"))
+        {
+            PlayerPrefs.SetString("SUI_ADDRESS", suiaddress);
+        }
 
         SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
 
