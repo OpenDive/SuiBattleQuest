@@ -117,30 +117,30 @@ namespace TcgEngine
         //Make sure the data is valid
         private void CheckDeckData()
         {
-            GameplayData gdata = GameplayData.Get();
-            CheckDeckArray(gdata.ai_decks);
-            CheckDeckArray(gdata.free_decks);
-            CheckDeckArray(gdata.starter_decks);
+            //GameplayData gdata = GameplayData.Get();
+            //CheckDeckArray(gdata.ai_decks);
+            //CheckDeckArray(gdata.free_decks);
+            //CheckDeckArray(gdata.starter_decks);
 
-            if(gdata.test_deck == null || gdata.test_deck_ai == null)
-                Debug.Log("Deck is null in Resources/GameplayData");
+            //if(gdata.test_deck == null || gdata.test_deck_ai == null)
+            //    Debug.Log("Deck is null in Resources/GameplayData");
 
-            deck_ids.Clear();
-            foreach (DeckData deck in DeckData.GetAll())
-            {
-                if (string.IsNullOrEmpty(deck.id))
-                    Debug.LogError(deck.name + " id is empty");
-                if (deck_ids.Contains(deck.id))
-                    Debug.LogError("Dupplicate Deck ID: " + deck.id);
+            //deck_ids.Clear();
+            //foreach (DeckData deck in DeckData.GetAll())
+            //{
+            //    if (string.IsNullOrEmpty(deck.id))
+            //        Debug.LogError(deck.name + " id is empty");
+            //    if (deck_ids.Contains(deck.id))
+            //        Debug.LogError("Dupplicate Deck ID: " + deck.id);
 
-                foreach (CardData card in deck.cards)
-                {
-                    if (card == null)
-                        Debug.LogError(deck.id + " has null card");
-                }
+            //    foreach (CardData card in deck.cards)
+            //    {
+            //        if (card == null)
+            //            Debug.LogError(deck.id + " has null card");
+            //    }
 
-                deck_ids.Add(deck.id);
-            }
+            //    deck_ids.Add(deck.id);
+            //}
         }
 
         private void CheckDeckArray(DeckData[] decks)
