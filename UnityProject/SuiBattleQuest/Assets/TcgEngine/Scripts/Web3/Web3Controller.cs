@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using TMPro;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Web3Controller : MonoBehaviour
 {
@@ -16,9 +17,9 @@ public class Web3Controller : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void StakeEntryFee(string objectName, string callback, string amount);
 
-    public Button connectToWalletBtn;
-    public Button registerForRacetBtn;
-    public Button fundWalletBtn;
+    //public Button connectToWalletBtn;
+    //public Button registerForRacetBtn;
+    //public Button fundWalletBtn;
 
     public TextMeshProUGUI debugLog;
 
@@ -34,11 +35,11 @@ public class Web3Controller : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Start()
-    {
-        connectToWalletBtn.onClick.AddListener(OnClickConnectWallet);
-        registerForRacetBtn.onClick.AddListener(OnClickStakeEntryFee);
-    }
+    //void Start()
+    //{
+    //    connectToWalletBtn.onClick.AddListener(OnClickConnectWallet);
+    //    registerForRacetBtn.onClick.AddListener(OnClickStakeEntryFee);
+    //}
 
     void Update()
     {
@@ -65,7 +66,7 @@ public class Web3Controller : MonoBehaviour
 
     void OnSuiAddress(string suiaddress)
     {
-
+        PlayerPrefs.SetString("SUI_ADDRESS", suiaddress);
     }
 
     /**
