@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddeaed1928144360b6de15f0e19fd0b, type: 3}
+  m_Name: DummyAttribute
+  m_EditorClassIdentifier: 
+  skin: basic
+  primary_color: A17E52
+  secondary_color: 8CB7E3
+  mood: sad

@@ -4,49 +4,153 @@ using UnityEngine;
 
 namespace TcgEngine
 {
-    //Represent the current state of a card during the game (data only)
-
+    /// <summary>
+    /// Represents the current state of a card during the game (data only).
+    /// </summary>
     [System.Serializable]
     public class Card
     {
+        /// <summary>
+        /// The ID of the card.
+        /// </summary>
         public string card_id;
+
+        /// <summary>
+        /// The unique identifier for the card.
+        /// </summary>
         public string uid;
+
+        /// <summary>
+        /// The ID of the player who owns the card.
+        /// </summary>
         public int player_id;
+
+        /// <summary>
+        /// The ID of the card variant.
+        /// </summary>
         public string variant_id;
 
+        /// <summary>
+        /// The current slot of the card.
+        /// </summary>
         public Slot slot;
+
+        /// <summary>
+        /// Indicates whether the card is exhausted.
+        /// </summary>
         public bool exhausted;
+
+        /// <summary>
+        /// The amount of damage the card has taken.
+        /// </summary>
         public int damage = 0;
 
+        /// <summary>
+        /// The mana cost of the card.
+        /// </summary>
         public int mana = 0;
+
+        /// <summary>
+        /// The attack value of the card.
+        /// </summary>
         public int attack = 0;
+
+        /// <summary>
+        /// The health points (HP) of the card.
+        /// </summary>
         public int hp = 0;
 
+        /// <summary>
+        /// Ongoing mana modifications.
+        /// </summary>
         public int mana_ongoing = 0;
+
+        /// <summary>
+        /// Ongoing attack modifications.
+        /// </summary>
         public int attack_ongoing = 0;
+
+        /// <summary>
+        /// Ongoing HP modifications.
+        /// </summary>
         public int hp_ongoing = 0;
 
+        /// <summary>
+        /// The unique identifier of an equipped card, if any.
+        /// </summary>
         public string equipped_uid = null;
 
+        /// <summary>
+        /// List of traits of the card.
+        /// </summary>
         public List<CardTrait> traits = new List<CardTrait>();
+
+        /// <summary>
+        /// List of ongoing traits of the card.
+        /// </summary>
         public List<CardTrait> ongoing_traits = new List<CardTrait>();
 
+        /// <summary>
+        /// List of status effects on the card.
+        /// </summary>
         public List<CardStatus> status = new List<CardStatus>();
+
+        /// <summary>
+        /// List of ongoing status effects on the card.
+        /// </summary>
         public List<CardStatus> ongoing_status = new List<CardStatus>();
 
+        /// <summary>
+        /// List of abilities of the card.
+        /// </summary>
         public List<string> abilities = new List<string>();
+
+        /// <summary>
+        /// List of ongoing abilities of the card.
+        /// </summary>
         public List<string> abilities_ongoing = new List<string>();
 
+        /// <summary>
+        /// Cached hash value for the card.
+        /// </summary>
         [System.NonSerialized] private int hash = 0;
+
+        /// <summary>
+        /// Cached card data.
+        /// </summary>
         [System.NonSerialized] private CardData data = null;
+
+        /// <summary>
+        /// Cached variant data.
+        /// </summary>
         [System.NonSerialized] private VariantData vdata = null;
+
+        /// <summary>
+        /// Cached ability data.
+        /// </summary>
         [System.NonSerialized] private List<AbilityData> abilities_data = null;
 
+        /// <summary>
+        /// Initializes a new instance of the Card class.
+        /// </summary>
+        /// <param name="card_id">The card ID.</param>
+        /// <param name="uid">The unique identifier.</param>
+        /// <param name="player_id">The player ID.</param>
         public Card(string card_id, string uid, int player_id) { this.card_id = card_id; this.uid = uid; this.player_id = player_id; }
 
+        /// <summary>
+        /// Resets the card's state.
+        /// </summary>
         public virtual void Refresh() { exhausted = false; }
+
+        /// <summary>
+        /// Clears ongoing statuses and traits.
+        /// </summary>
         public virtual void ClearOngoing() { ongoing_status.Clear(); ongoing_traits.Clear(); ClearOngoingAbility(); attack_ongoing = 0; hp_ongoing = 0; mana_ongoing = 0; }
 
+        /// <summary>
+        /// Clears all data from the card.
+        /// </summary>
         public virtual void Clear()
         {
             ClearOngoing(); Refresh(); damage = 0; status.Clear(); 
@@ -54,11 +158,21 @@ namespace TcgEngine
             equipped_uid = null;
         }
 
+        /// <summary>
+        /// Gets the attack value.
+        /// </summary>
+        /// <returns>The attack value.</returns>
         public virtual int GetAttack() { return Mathf.Max(attack + attack_ongoing, 0); }
+
+        /// <summary>
+        /// Gets the HP value.
+        /// </summary>
+        /// <returns>The HP value.</returns>
         public virtual int GetHP() { return Mathf.Max(hp + hp_ongoing - damage, 0); }
         public virtual int GetHPMax() { return Mathf.Max(hp + hp_ongoing, 0); }
         public virtual int GetMana() { return Mathf.Max(mana + mana_ongoing, 0); }
 
+        // Marcus: Set card's data
         public virtual void SetCard(CardData icard, VariantData cvariant)
         {
             data = icard;

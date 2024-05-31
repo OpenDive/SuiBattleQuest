@@ -1,7 +1,8 @@
 ﻿using System;
-public class NewClass
+public class CardCreationManager
 {
-    public NewClass()
+    public CardCreationManager()
     {
+
     }
 }

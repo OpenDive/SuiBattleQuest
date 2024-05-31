@@ -124,6 +124,7 @@ namespace TcgEngine.UI
             }
         }
 
+        // TODO: Look into tapping to Sui Blockchain with this.
         private async void Login(string user, string password)
         {
             clicked = true;
