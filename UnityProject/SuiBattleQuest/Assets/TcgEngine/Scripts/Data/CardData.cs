@@ -70,16 +70,23 @@ namespace TcgEngine
         public static List<CardData> card_list = new List<CardData>();                              //Faster access in loops
         public static Dictionary<string, CardData> card_dict = new Dictionary<string, CardData>();    //Faster access in Get(id)
 
-        public static void Load()
+        public static void Load(string folder = "")
         {
             if (card_list.Count == 0)
             {
-                // TODO: Replace with call to ReactJS layer.
+                //// TODO: Replace with call to ReactJS layer.
                 SuiFrensData[] frens = Resources.LoadAll<SuiFrensData>("Frens");
                 foreach (SuiFrensData fren in frens)
                     card_list.Add(fren.ConvertToCard());
 
                 foreach (CardData card in card_list)
+                    card_dict.Add(card.id, card);
+
+                var cards = Resources.LoadAll<CardData>(folder);
+
+                card_list.AddRange(cards);
+
+                foreach (CardData card in cards)
                     card_dict.Add(card.id, card);
             }
         }

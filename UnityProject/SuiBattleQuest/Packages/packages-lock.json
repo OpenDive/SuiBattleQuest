@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.community.netcode.transport.websocket": {
+      "version": "file:/Users/marcodotio/Downloads/multiplayer-community-contributions-main/Transports/com.community.netcode.transport.websocket",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "7.0.12",
       "depth": 1,

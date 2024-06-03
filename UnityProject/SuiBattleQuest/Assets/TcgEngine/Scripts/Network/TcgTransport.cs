@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
+using Netcode.Transports.WebSocket;
 
 namespace TcgEngine
 {

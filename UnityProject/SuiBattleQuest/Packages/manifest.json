@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.community.netcode.transport.websocket": "file:/Users/marcodotio/Downloads/multiplayer-community-contributions-main/Transports/com.community.netcode.transport.websocket",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.feature.2d": "2.0.0",

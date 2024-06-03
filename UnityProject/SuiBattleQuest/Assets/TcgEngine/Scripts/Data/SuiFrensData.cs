@@ -6,6 +6,7 @@ using System.Collections;
 using System;
 using Unity.VectorGraphics;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace TcgEngine
 {
@@ -54,6 +55,16 @@ namespace TcgEngine
                 foreach (SuiFrensData fren in frens_list)
                     frens_dict.Add(fren.id, fren);
             }
+        }
+
+        public static byte[] GenerateRandomByteArray(int length)
+        {
+            byte[] randomBytes = new byte[length];
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomBytes);
+            }
+            return randomBytes;
         }
 
         public static IEnumerator GetImage(string url, Action<Sprite> callback)
@@ -125,21 +136,24 @@ namespace TcgEngine
             //   - Next n amount of bytes will choose the Abilities (113 abilities)
             // - HP, Mana, and Attack are assigned the three bits after above step
 
+            byte[] random_gene = GenerateRandomByteArray(32);
+            //byte[] random_gene = genes;
+
             int max_hp = 20;
-            int max_mana = 20;
+            int max_mana = 5;
             int max_attack = max_hp / 2;
 
-            int team_idx = genes[0] % teams.Length;
-            int rarity_idx = genes[1] % rarities.Length;
-            int abilities_length = (genes[2] + 2) % 26;
-            int hp_value = genes[genes.Length - 1] % max_hp;
-            int mana_value = genes[genes.Length - 2] % max_mana;
-            int attack_value = genes[genes.Length - 3] % max_attack;
+            int team_idx = random_gene[0] % teams.Length;
+            int rarity_idx = random_gene[1] % rarities.Length;
+            int abilities_length = (random_gene[2] + 2) % 26;
+            int hp_value = random_gene[random_gene.Length - 1] % max_hp;
+            int mana_value = random_gene[random_gene.Length - 2] % max_mana;
+            int attack_value = random_gene[random_gene.Length - 3] % max_attack;
 
             List<AbilityData> abilities = new();
-            for(int i = 0; i < abilities_length; ++i)
+            for (int i = 0; i < abilities_length; ++i)
             {
-                int abilities_idx = genes[2 + i] % all_abilities.Length;
+                int abilities_idx = random_gene[2 + i] % all_abilities.Length;
                 abilities.Add(all_abilities[abilities_idx]);
             }
 
