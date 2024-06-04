@@ -75,7 +75,7 @@ namespace TcgEngine.UI
                     CardDataQ card = new CardDataQ();
                     card.card = CardData.Get(ucard.tid);
                     card.variant = VariantData.Get(ucard.variant);
-                    card.quantity = ucard.quantity;
+                    card.quantity = 1;
                     if (card.card != null)
                         cards.Add(card);
                 }

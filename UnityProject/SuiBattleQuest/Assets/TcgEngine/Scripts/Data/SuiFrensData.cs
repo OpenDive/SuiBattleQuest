@@ -124,6 +124,7 @@ namespace TcgEngine
             returnCard.art_full = image_full;
             returnCard.art_board = image_board;
             returnCard.type = CardType.Character;
+            returnCard.desc = "This is a SuiFren!";
 
             // The various traits below will be generated using the Gene array:
             // - Team is first to be generated (0th index)

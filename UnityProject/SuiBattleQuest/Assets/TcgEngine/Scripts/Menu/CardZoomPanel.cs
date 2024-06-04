@@ -14,14 +14,6 @@ namespace TcgEngine.UI
     {
         public CardUI card_ui;
         public Text desc;
-        public Image quantity_bar;
-        public Text quantity_txt;
-
-        public GameObject trade_area;
-        public InputField trade_quantity;
-        public Text buy_cost;
-        public Text sell_cost;
-        public Text trade_error;
 
         private CardData card;
         private VariantData variant;
@@ -49,8 +41,6 @@ namespace TcgEngine.UI
             {
                 int quantity = GetBuyQuantity();
                 int cost = quantity * card.cost * variant.cost_factor;
-                buy_cost.text = cost.ToString();
-                sell_cost.text = Mathf.RoundToInt(cost * GameplayData.Get().sell_ratio).ToString();
             }
         }
 
@@ -61,12 +51,6 @@ namespace TcgEngine.UI
 
             UserData udata = Authenticator.Get().UserData;
             int quantity = udata.GetCardQuantity(card, variant);
-            quantity_txt.text = quantity.ToString();
-            quantity_txt.enabled = quantity > 0;
-            quantity_bar.enabled = quantity > 0;
-            trade_quantity.text = "1";
-            trade_error.text = "";
-            trade_area?.SetActive(card.deckbuilding && card.cost > 0);
 
             card_ui.SetCard(card, variant);
             string desc = card.GetDesc();
@@ -114,17 +98,12 @@ namespace TcgEngine.UI
 
             string url = ApiClient.ServerURL + "/users/cards/buy/";
             string jdata = ApiTool.ToJson(req);
-            trade_error.text = "";
 
             WebResponse res = await ApiClient.Get().SendPostRequest(url, jdata);
             if (res.success)
             {
                 CollectionPanel.Get().ReloadUser();
                 Hide();
-            }
-            else
-            {
-                trade_error.text = res.error;
             }
         }
 
@@ -160,17 +139,12 @@ namespace TcgEngine.UI
 
             string url = ApiClient.ServerURL + "/users/cards/sell/";
             string jdata = ApiTool.ToJson(req);
-            trade_error.text = "";
 
             WebResponse res = await ApiClient.Get().SendPostRequest(url, jdata);
             if (res.success)
             {
                 CollectionPanel.Get().ReloadUser();
                 Hide();
-            }
-            else
-            {
-                trade_error.text = res.error;
             }
         }
 
@@ -206,9 +180,6 @@ namespace TcgEngine.UI
 
         public int GetBuyQuantity()
         {
-            bool success = int.TryParse(trade_quantity.text, out int quantity);
-            if (success)
-                return quantity;
             return 0;
         }
 

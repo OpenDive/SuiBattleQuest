@@ -48,7 +48,7 @@ namespace TcgEngine.UI
             }
         }
 
-        public void SetLine(CardData card, VariantData variant, int quantity, bool invalid = false)
+        public void SetLine(CardData card, VariantData variant)
         {
             this.card = card;
             this.variant = variant;
@@ -60,29 +60,27 @@ namespace TcgEngine.UI
                 title.text = card.title;
             if (title != null)
                 title.color = variant.color;
-            if (value != null)
-                value.text = quantity.ToString();
-            if (value != null)
-                value.enabled = quantity > 1;
+            //if (value != null)
+            //    value.text = quantity.ToString();
+            //if (value != null)
+            //    value.enabled = quantity > 1;
             if (cost != null)
                 cost.value = card.mana;
             if (this.value != null)
-                this.value.color = invalid ? Color.red : Color.white;
-            if(invalid)
-                title.color = Color.gray;
+                this.value.color = Color.white;
 
             if (image != null)
             {
                 image.sprite = card.GetFullArt(variant);
                 image.enabled = true;
-                image.material = invalid ? disabled_mat : default_mat;
+                image.material = default_mat;
             }
 
             if (frame != null)
             {
                 frame.sprite = variant.frame;
                 frame.enabled = true;
-                frame.material = invalid ? disabled_mat : default_mat;
+                frame.material = default_mat;
             }
 
             gameObject.SetActive(true);

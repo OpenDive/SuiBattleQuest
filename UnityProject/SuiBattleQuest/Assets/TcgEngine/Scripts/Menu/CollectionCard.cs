@@ -13,8 +13,6 @@ namespace TcgEngine.UI
     public class CollectionCard : MonoBehaviour
     {
         public CardUI card_ui;
-        public Image quantity_bar;
-        public Text quantity;
 
         [Header("Mat")]
         public Material color_mat;
@@ -29,36 +27,14 @@ namespace TcgEngine.UI
             card_ui.onClickRight += onClickRight;
         }
 
-        public void SetCard(CardData card, VariantData variant, int quantity)
+        public void SetCard(CardData card, VariantData variant)
         {
             card_ui.SetCard(card, variant);
-            SetQuantity(quantity);
-        }
-
-        public void SetQuantity(int quantity)
-        {
-            if (this.quantity_bar != null)
-                this.quantity_bar.enabled = quantity > 0;
-            if (this.quantity != null)
-                this.quantity.text = quantity.ToString();
-            if (this.quantity != null)
-                this.quantity.enabled = quantity > 0;
         }
 
         public void SetGrayscale(bool grayscale)
         {
-            if (grayscale)
-            {
-                quantity_bar.material = grayscale_mat;
-                quantity_bar.material = grayscale_mat;
-                card_ui.SetMaterial(grayscale_mat);
-            }
-            else
-            {
-                quantity_bar.material = color_mat;
-                quantity_bar.material = color_mat;
-                card_ui.SetMaterial(color_mat);
-            }
+            card_ui.SetMaterial(color_mat);
         }
 
         public CardData GetCard()
