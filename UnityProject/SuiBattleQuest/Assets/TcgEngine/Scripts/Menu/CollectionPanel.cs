@@ -179,7 +179,6 @@ namespace TcgEngine.UI
             RefreshFilters();
             RefreshCards();
             RefreshDeckList();
-            RefreshStarterDeck();
         }
 
         private void RefreshFilters()
@@ -396,15 +395,6 @@ namespace TcgEngine.UI
 
             deck_quantity.text = count + "/" + GameplayData.Get().deck_size;
             deck_quantity.color = count >= GameplayData.Get().deck_size ? Color.white : Color.red;
-        }
-
-        private void RefreshStarterDeck()
-        {
-            UserData udata = Authenticator.Get().UserData;
-            if (udata != null && udata.cards.Length == 0 || udata.rewards.Length == 0)
-            {
-                StarterDeckPanel.Get().Show();
-            }
         }
 
         //-------- Deck editing actions

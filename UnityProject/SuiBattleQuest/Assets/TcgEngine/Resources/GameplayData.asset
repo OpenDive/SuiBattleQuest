@@ -35,9 +35,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8539b1ce42aef234786631b3c4bfb067, type: 2}
   - {fileID: 11400000, guid: e371ae9abcc31014992b685a145a087c, type: 2}
   ai_decks:
-  - {fileID: 11400000, guid: 8aea02f8dfcc2834d8eeca8e259140ce, type: 2}
-  - {fileID: 11400000, guid: 8539b1ce42aef234786631b3c4bfb067, type: 2}
-  - {fileID: 11400000, guid: e371ae9abcc31014992b685a145a087c, type: 2}
+  - {fileID: 11400000, guid: f9a1c7d098a964dbfb8c0e06d3bbaf6a, type: 2}
   arena_list:
   - Game
   test_deck: {fileID: 11400000, guid: 0e6326c43c0688e40bbf592cf3ea6dec, type: 2}

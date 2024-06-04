@@ -81,6 +81,14 @@ namespace TcgEngine
 
                 foreach (CardData card in card_list)
                     card_dict.Add(card.id, card);
+
+                // AI Cards
+                CardData[] other_frens = Resources.LoadAll<CardData>("Cards/SuiFrens");
+                foreach (CardData card in other_frens)
+                    card_list.Add(card);
+
+                foreach (CardData card in other_frens)
+                    card_dict.Add(card.id, card);
             }
         }
 
