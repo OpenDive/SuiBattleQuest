@@ -50,10 +50,7 @@ namespace TcgEngine.UI
             version_text.text = "Version " + Application.version;
             deck_selector.onChange += OnChangeDeck;
 
-            if (Authenticator.Get().IsConnected())
-                AfterLogin();
-            else
-                RefreshLogin();
+            AfterLogin();
         }
 
         void Update()
@@ -231,12 +228,6 @@ namespace TcgEngine.UI
 
         public void OnClickSolo()
         {
-            if (!Authenticator.Get().IsConnected())
-            {
-                FadeToScene("LoginMenu");
-                return;
-            }
-
             GameClient.player_settings.deck.tid = deck_selector.GetDeckID();
             GameClient.ai_settings.deck.tid = GameplayData.Get().GetRandomAIDeck();
             GameClient.ai_settings.ai_level = GameplayData.Get().ai_level;
