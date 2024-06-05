@@ -1,0 +1,3 @@
+[submodule "sbq-client"]
+	path = sbq-client
+	url = https://github.com/OpenDive/sbq-client
