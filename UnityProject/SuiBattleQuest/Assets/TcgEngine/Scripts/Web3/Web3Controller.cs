@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using TMPro;
-using static UnityEngine.Rendering.DebugUI;
-using UnityEngine.SceneManagement;
 using TcgEngine;
+using UnityEngine.Networking;
 
 namespace TcgEngine.Web3
 {
@@ -71,14 +70,29 @@ namespace TcgEngine.Web3
                 PlayerPrefs.SetString("SUI_ADDRESS", suiaddress);
 
             Debug.Log($"Sui Address: {suiaddress}");
+            string tmpAddr = "0x114a63e533262fee088dcfe8c015d6786ec681611abe3c72c77abdf278a8f0f5";
 
-            StartCoroutine(FetchKioskData());
+            //StartCoroutine(FetchKioskData(suiaddress));
+            StartCoroutine(FetchKioskData(tmpAddr));
         }
 
         // TODO: Implement Kiosk fetching for the REST API
-        IEnumerator FetchKioskData()
+        public IEnumerator FetchKioskData(string address)
         {
-            yield return new WaitForSeconds(3);
+            string url = $"http://localhost:5173/api/getSuiFrens?address={address}";
+            UnityWebRequest webRequest = WebRequest.Create(url);
+            yield return WebTool.SendRequest(webRequest);
+
+            // Check for errors
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError($"Error: {webRequest.error}");
+            }
+            else
+            {
+                // Process the response
+                Debug.Log($"Response: {webRequest.downloadHandler.text}");
+            }
 
             SceneNav.GoTo("Menu");
         }
